@@ -29,11 +29,12 @@ start.addEventListener("click", () => {
   let remainingTime = timerValue;
 
   const timer = setInterval(() => {
-    console.log(remainingTime);
+    const getCountdown = document.getElementById("countdown");
+    getCountdown.textContent = remainingTime;
     remainingTime--;
 
     if (remainingTime < 0) {
-      console.log("Times Up!");
+      getCountdown.textContent = "Times up!"
       clearInterval(timer);
     }
   }, 1000);
