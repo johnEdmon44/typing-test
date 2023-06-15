@@ -6,6 +6,7 @@ const hardWords = ["accommodate", "boulevard", "cappuccino", "dexterity", "exqui
 
 const getDifficulty = document.getElementById("difficulty");
 const start = document.getElementById("start");
+const getTimer = document.getElementById("timer");
 
 
 start.addEventListener("click", () => {
@@ -22,4 +23,18 @@ start.addEventListener("click", () => {
 
   const shuffleArray = selectedDifficulty.sort(() => 0.5 - Math.random());
   const result = shuffleArray.slice(0, 3);
+
+  const timerValue = parseInt(getTimer.value);
+
+  let remainingTime = timerValue;
+
+  const timer = setInterval(() => {
+    console.log(remainingTime);
+    remainingTime--;
+
+    if (remainingTime < 0) {
+      console.log("Times Up!");
+      clearInterval(timer);
+    }
+  }, 1000);
 });
