@@ -38,4 +38,7 @@ start.addEventListener("click", () => {
       clearInterval(timer);
     }
   }, 1000);
+
+  const getWords = document.getElementById("words");
+  getWords.textContent = result.join(" ");
 });
