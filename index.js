@@ -5,31 +5,24 @@ const mediumWords = ["butterfly", "chocolate", "dolphin", "elephant", "fantastic
 const hardWords = ["accommodate", "boulevard", "cappuccino", "dexterity", "exquisite", "flamboyant", "gargantuan", "hierarchy", "impeccable", "juxtapose", "knowledge", "labyrinth", "magnificent", "nebulous", "obsequious", "pulchritude", "quintessential", "resilience", "serendipity", "tesseract", "ubiquitous", "vociferous", "wanderlust", "xenophobia", "yesterday", "zealous"];
 
 const getDifficulty = document.getElementById("difficulty");
-const start = document.getElementById("start");
+const getStart = document.getElementById("start");
 const getTimer = document.getElementById("timer");
+const getCountdown = document.getElementById("countdown");
+const getWords = document.getElementById("words");
 
+let selectedDifficulty;
 
-start.addEventListener("click", () => {
-  const difficultyValue = getDifficulty.value;
-  let selectedDifficulty;
-
-  if (difficultyValue === "easy") {
-    selectedDifficulty = easyWords;
-  } else if (difficultyValue === "medium") {
-    selectedDifficulty = mediumWords;
-  } else if (difficultyValue === "hard") {
-    selectedDifficulty = hardWords;
-  }
-
+function generateWords() {
   const shuffleArray = selectedDifficulty.sort(() => 0.5 - Math.random());
   const result = shuffleArray.slice(0, 3);
+  getWords.textContent = result.join(" ");
+}
 
+function countDown() {
   const timerValue = parseInt(getTimer.value);
-
   let remainingTime = timerValue;
 
   const timer = setInterval(() => {
-    const getCountdown = document.getElementById("countdown");
     getCountdown.textContent = remainingTime;
     remainingTime--;
 
@@ -38,7 +31,23 @@ start.addEventListener("click", () => {
       clearInterval(timer);
     }
   }, 1000);
+}
 
-  const getWords = document.getElementById("words");
-  getWords.textContent = result.join(" ");
+function difficulty() {
+  const difficultyValue = getDifficulty.value;
+
+  if (difficultyValue === "easy") {
+    selectedDifficulty = easyWords;
+  } else if (difficultyValue === "medium") {
+    selectedDifficulty = mediumWords;
+  } else if (difficultyValue === "hard") {
+    selectedDifficulty = hardWords;
+  }
+}
+
+
+getStart.addEventListener("click", () => {
+  difficulty();
+  countDown();
+  generateWords();
 });
