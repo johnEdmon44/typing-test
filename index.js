@@ -9,6 +9,7 @@ const getStart = document.getElementById("start");
 const getTimer = document.getElementById("timer");
 const getCountdown = document.getElementById("countdown");
 const getWords = document.getElementById("words");
+const getInputField = document.getElementById("inputField");
 
 let selectedDifficulty;
 
@@ -16,6 +17,8 @@ function generateWords() {
   const shuffleArray = selectedDifficulty.sort(() => 0.5 - Math.random());
   const result = shuffleArray.slice(0, 3);
   getWords.textContent = result.join(" ");
+
+  return result;
 }
 
 function countDown() {
@@ -46,8 +49,23 @@ function difficulty() {
 }
 
 
+let generatedWords = [];
+
+function compareInput(inputValue) {
+  if (generatedWords.join(" ") === inputValue) {
+    console.log("correct");
+    generatedWords = generateWords();
+    getInputField.value = "";
+  }
+}
+
 getStart.addEventListener("click", () => {
   difficulty();
   countDown();
-  generateWords();
+  generatedWords = generateWords();
+});
+
+getInputField.addEventListener("input", () => {
+  const inputValue = getInputField.value;
+  compareInput(inputValue);
 });
