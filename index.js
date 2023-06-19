@@ -12,6 +12,7 @@ const getWords = document.getElementById("words");
 const getInputField = document.getElementById("inputField");
 const getEnd = document.getElementById("end");
 const getScore = document.getElementById("score");
+const getGamerOver = document.getElementById("gameOver");
 
 
 let generatedWords = [];
@@ -41,8 +42,7 @@ function countDown() {
       getCountdown.textContent = "Times up!"
       clearInterval(countDownInterval);
       resetGame();
-      getScore.textContent = score;
-      getScore.style.visibility = "visible";
+      gameOver();
     }
   }, 1000);
 }
@@ -70,12 +70,20 @@ function compareInput(inputValue) {
 }
 
 
+function gameOver() {
+  getScore.textContent = score;
+  getScore.style.visibility = "visible";
+  getGamerOver.style.visibility = "visible";
+}
+
+
 function startGame() {
   getStart.style.visibility = "hidden";
   getEnd.style.visibility = "visible";
   getCountdown.textContent = ""; 
   getScore.textContent = "";
-  getInputField.value = ""; 
+  getInputField.value = "";
+  getGamerOver.style.visibility =  "hidden"; 
 }
 
 

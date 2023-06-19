@@ -20,3 +20,8 @@
 #score {
   visibility: hidden;
 }
+
+
+#gameOver {
+  visibility: hidden;
+}
