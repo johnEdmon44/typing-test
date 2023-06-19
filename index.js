@@ -11,6 +11,7 @@ const getCountdown = document.getElementById("countdown");
 const getWords = document.getElementById("words");
 const getInputField = document.getElementById("inputField");
 const getEnd = document.getElementById("end");
+const getScore = document.getElementById("score");
 
 let generatedWords = [];
 let selectedDifficulty;
@@ -37,6 +38,7 @@ function countDown() {
       getCountdown.textContent = "Times up!"
       clearInterval(countDownInterval);
       resetGame();
+      getScore.textContent = score;
     }
   }, 1000);
 }
@@ -90,5 +92,6 @@ function resetGame() {
   getStart.style.visibility = "visible"; 
   getEnd.style.visibility = "hidden"; 
   getCountdown.textContent = ""; 
-  getWords.textContent = ""; 
+  getWords.textContent = "";
+  getScore.textContent = ""; 
 }
