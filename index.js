@@ -15,6 +15,7 @@ const getEnd = document.getElementById("end");
 let generatedWords = [];
 let selectedDifficulty;
 let countDownInterval;
+let score = 0;
 
 function generateWords() {
   const shuffleArray = selectedDifficulty.sort(() => 0.5 - Math.random());
@@ -35,6 +36,7 @@ function countDown() {
     if (remainingTime < 0) {
       getCountdown.textContent = "Times up!"
       clearInterval(countDownInterval);
+      resetGame();
     }
   }, 1000);
 }
@@ -55,9 +57,9 @@ function difficulty() {
 
 function compareInput(inputValue) {
   if (generatedWords.join(" ") === inputValue) {
-    console.log("correct");
     generatedWords = generateWords();
     getInputField.value = "";
+    score += 10;
   }
 }
 
