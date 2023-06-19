@@ -10,8 +10,11 @@ const getTimer = document.getElementById("timer");
 const getCountdown = document.getElementById("countdown");
 const getWords = document.getElementById("words");
 const getInputField = document.getElementById("inputField");
+const getEnd = document.getElementById("end");
 
+let generatedWords = [];
 let selectedDifficulty;
+let countDownInterval;
 
 function generateWords() {
   const shuffleArray = selectedDifficulty.sort(() => 0.5 - Math.random());
@@ -25,13 +28,13 @@ function countDown() {
   const timerValue = parseInt(getTimer.value);
   let remainingTime = timerValue;
 
-  const timer = setInterval(() => {
+  countDownInterval = setInterval(() => {
     getCountdown.textContent = remainingTime;
     remainingTime--;
 
     if (remainingTime < 0) {
       getCountdown.textContent = "Times up!"
-      clearInterval(timer);
+      clearInterval(countDownInterval);
     }
   }, 1000);
 }
@@ -49,7 +52,6 @@ function difficulty() {
 }
 
 
-let generatedWords = [];
 
 function compareInput(inputValue) {
   if (generatedWords.join(" ") === inputValue) {
@@ -63,9 +65,28 @@ getStart.addEventListener("click", () => {
   difficulty();
   countDown();
   generatedWords = generateWords();
+
+  getStart.style.visibility = "hidden";
+  getEnd.style.visibility = "visible";
 });
 
 getInputField.addEventListener("input", () => {
   const inputValue = getInputField.value;
   compareInput(inputValue);
 });
+
+getEnd.addEventListener("click", () => {
+  clearInterval(countDownInterval);
+  generatedWords = [];
+
+  resetGame();
+});
+
+function resetGame() {
+  getInputField.value = "";
+  generatedWords = []; 
+  getStart.style.visibility = "visible"; 
+  getEnd.style.visibility = "hidden"; 
+  getCountdown.textContent = ""; 
+  getWords.textContent = ""; 
+}

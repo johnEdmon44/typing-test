@@ -3,3 +3,13 @@
   margin: 0;
   padding: 0;
 }
+
+.buttons {
+  position: relative;
+}
+
+#end {
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+}
