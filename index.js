@@ -13,10 +13,12 @@ const getInputField = document.getElementById("inputField");
 const getEnd = document.getElementById("end");
 const getScore = document.getElementById("score");
 
+
 let generatedWords = [];
 let selectedDifficulty;
 let countDownInterval;
 let score = 0;
+
 
 function generateWords() {
   const shuffleArray = selectedDifficulty.sort(() => 0.5 - Math.random());
@@ -25,6 +27,7 @@ function generateWords() {
 
   return result;
 }
+
 
 function countDown() {
   const timerValue = parseInt(getTimer.value);
@@ -39,9 +42,11 @@ function countDown() {
       clearInterval(countDownInterval);
       resetGame();
       getScore.textContent = score;
+      getScore.style.visibility = "visible";
     }
   }, 1000);
 }
+
 
 function difficulty() {
   const difficultyValue = getDifficulty.value;
@@ -56,7 +61,6 @@ function difficulty() {
 }
 
 
-
 function compareInput(inputValue) {
   if (generatedWords.join(" ") === inputValue) {
     generatedWords = generateWords();
@@ -65,26 +69,15 @@ function compareInput(inputValue) {
   }
 }
 
-getStart.addEventListener("click", () => {
-  difficulty();
-  countDown();
-  generatedWords = generateWords();
 
+function startGame() {
   getStart.style.visibility = "hidden";
   getEnd.style.visibility = "visible";
-});
+  getCountdown.textContent = ""; 
+  getScore.textContent = "";
+  getInputField.value = ""; 
+}
 
-getInputField.addEventListener("input", () => {
-  const inputValue = getInputField.value;
-  compareInput(inputValue);
-});
-
-getEnd.addEventListener("click", () => {
-  clearInterval(countDownInterval);
-  generatedWords = [];
-
-  resetGame();
-});
 
 function resetGame() {
   getInputField.value = "";
@@ -93,5 +86,25 @@ function resetGame() {
   getEnd.style.visibility = "hidden"; 
   getCountdown.textContent = ""; 
   getWords.textContent = "";
-  getScore.textContent = ""; 
 }
+
+
+getStart.addEventListener("click", () => {
+  difficulty();
+  countDown();
+  generatedWords = generateWords();
+  startGame();
+});
+
+
+getInputField.addEventListener("input", () => {
+  const inputValue = getInputField.value;
+  compareInput(inputValue);
+});
+
+
+getEnd.addEventListener("click", () => {
+  clearInterval(countDownInterval);
+  generatedWords = [];
+  resetGame();
+});
