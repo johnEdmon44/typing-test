@@ -13,6 +13,7 @@ const getInputField = document.getElementById("inputField");
 const getEnd = document.getElementById("end");
 const getScore = document.getElementById("score");
 const getGamerOver = document.getElementById("gameOver");
+const getSelectedDifficulty = document.getElementById("selectedDifficulty");
 
 
 let generatedWords = [];
@@ -74,6 +75,7 @@ function gameOver() {
   getScore.textContent = score;
   getScore.style.visibility = "visible";
   getGamerOver.style.visibility = "visible";
+  getSelectedDifficulty.textContent = getDifficulty.value;
 }
 
 
@@ -84,6 +86,7 @@ function startGame() {
   getScore.textContent = "";
   getInputField.value = "";
   getGamerOver.style.visibility =  "hidden"; 
+  getSelectedDifficulty.textContent = "";
 }
 
 
