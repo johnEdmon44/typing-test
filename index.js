@@ -66,7 +66,7 @@ function compareInput(inputValue) {
   if (generatedWords.join(" ") === inputValue) {
     generatedWords = generateWords();
     getInputField.value = "";
-    score += 10;
+    updateScore();
   }
 }
 
@@ -97,6 +97,19 @@ function resetGame() {
   getEnd.style.visibility = "hidden"; 
   getCountdown.textContent = ""; 
   getWords.textContent = "";
+}
+
+
+function updateScore() {
+  const difficulty = getDifficulty.value;
+
+  if (difficulty === "easy") {
+    score += 10;
+  } else if (difficulty === "medium") {
+    score += 20;
+  } else if (difficulty === "hard") {
+    score =+ 30;
+  }
 }
 
 
