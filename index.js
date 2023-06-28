@@ -21,6 +21,8 @@ let selectedDifficulty;
 let countDownInterval;
 let score = 0;
 
+const leaderboards = JSON.parse(localStorage.getItem("leaderboards")) || [];
+
 
 function generateWords() {
   const shuffleArray = selectedDifficulty.sort(() => 0.5 - Math.random());
@@ -44,6 +46,7 @@ function countDown() {
       clearInterval(countDownInterval);
       resetGame();
       gameOver();
+      addToLeaderboards();
     }
   }, 1000);
 }
@@ -110,6 +113,29 @@ function updateScore() {
   } else if (difficulty === "hard") {
     score =+ 30;
   }
+}
+
+
+function addToLeaderboards() {
+  const gameDetails = {
+    id: generateRandomId(),
+    time: getTimer.value,
+    score: score,
+    difficulty: getDifficulty.value,
+  }
+
+  leaderboards.push(gameDetails);
+
+  localStorage.setItem("leaderboards", JSON.stringify(leaderboards));
+}
+
+
+function generateRandomId() {
+  const min = 1000000000;
+  const max = 9999999999; 
+  const randomId = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  return randomId;
 }
 
 
