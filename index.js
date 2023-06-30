@@ -23,6 +23,8 @@ let score = 0;
 
 const leaderboards = JSON.parse(localStorage.getItem("leaderboards")) || [];
 
+renderLeaderboard();
+
 
 function generateWords() {
   const shuffleArray = selectedDifficulty.sort(() => 0.5 - Math.random());
@@ -47,6 +49,7 @@ function countDown() {
       resetGame();
       gameOver();
       addToLeaderboards();
+      renderLeaderboard();
     }
   }, 1000);
 }
@@ -136,6 +139,28 @@ function generateRandomId() {
   const randomId = Math.floor(Math.random() * (max - min + 1)) + min;
 
   return randomId;
+}
+
+
+function renderLeaderboard() {
+  const leaderboardContainer = document.getElementById("leaderboard");
+  leaderboardContainer.textContent = "";
+
+  const storedLeaderboard = localStorage.getItem("leaderboards");
+  const leaderboards = storedLeaderboard ? JSON.parse(storedLeaderboard) : [];
+
+  if(leaderboards.length > 0) {
+    const leaderboardList = document.createElement("ul");
+    leaderboardList.classList.add("leaderboard-list");
+
+    leaderboards.forEach((game, count) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${count + 1} Score: ${game.score} Time: ${game.time} Difficulty: ${game.difficulty}`;
+      leaderboardList.appendChild(listItem);
+    });
+
+    leaderboardContainer.appendChild(leaderboardList);
+  }
 }
 
 
