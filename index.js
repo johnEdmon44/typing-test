@@ -93,6 +93,7 @@ function startGame() {
   getInputField.value = "";
   getGamerOver.style.visibility =  "hidden"; 
   getSelectedDifficulty.textContent = "";
+  score = 0;
 }
 
 
