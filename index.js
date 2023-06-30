@@ -149,6 +149,8 @@ function renderLeaderboard() {
   const storedLeaderboard = localStorage.getItem("leaderboards");
   const leaderboards = storedLeaderboard ? JSON.parse(storedLeaderboard) : [];
 
+  leaderboards.sort((a, b) => b.score - a.score)
+
   if(leaderboards.length > 0) {
     const leaderboardList = document.createElement("ul");
     leaderboardList.classList.add("leaderboard-list");
