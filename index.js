@@ -150,13 +150,15 @@ function renderLeaderboard() {
   const storedLeaderboard = localStorage.getItem("leaderboards");
   const leaderboards = storedLeaderboard ? JSON.parse(storedLeaderboard) : [];
 
-  leaderboards.sort((a, b) => b.score - a.score)
 
   if(leaderboards.length > 0) {
     const leaderboardList = document.createElement("ul");
     leaderboardList.classList.add("leaderboard-list");
 
-    leaderboards.forEach((game, count) => {
+    const sortedLeaderboard = leaderboards.sort((a, b) => b.score - a.score); // sort by highest
+    const topTen = sortedLeaderboard.slice(0, 10);
+
+    topTen.forEach((game, count) => {
       const listItem = document.createElement("li");
       listItem.textContent = `${count + 1} Score: ${game.score} Time: ${game.time} Difficulty: ${game.difficulty}`;
       leaderboardList.appendChild(listItem);
