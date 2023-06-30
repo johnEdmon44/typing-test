@@ -82,6 +82,7 @@ function gameOver() {
   getScore.style.visibility = "visible";
   getGamerOver.style.visibility = "visible";
   getSelectedDifficulty.textContent = getDifficulty.value;
+  score = 0;
 }
 
 
@@ -103,6 +104,7 @@ function resetGame() {
   getEnd.style.visibility = "hidden"; 
   getCountdown.textContent = ""; 
   getWords.textContent = "";
+  score = 0;
 }
 
 
