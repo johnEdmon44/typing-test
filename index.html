@@ -5,30 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="index.js" defer></script>
   <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <title>Typing test</title>
 </head>
 <body>
-  <select id="difficulty">
-    <option value="easy" selected>Easy</option>
-    <option value="medium">Medium</option>
-    <option value="hard">Hard</option>
-  </select>
+  <h1>TYPING TEST</h1>
 
-  <select id="timer">
-    <option value="30" selected>30sec</option>
-    <option value="60">1min</option>
-    <option value="120">2min</option>
-    <option value="300">5min</option>
-  </select>
+  <div class="selection--wrapper">
+    <div class="selection--container">
+      <p>Choose difficulty:</p>
+      <select id="difficulty">
+        <option value="easy" selected>Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+
+    <div class="selection--container">
+      <p>Choose time:</p>
+      <select id="timer">
+        <option value="30" selected>30sec</option>
+        <option value="60">1min</option>
+        <option value="120">2min</option>
+        <option value="300">5min</option>
+      </select>
+    </div>
+  </div>
   
   <p id="countdown"></p>
   <p id="words"></p>
 
-  <input type="text" id="inputField" placeholder="Type the words...">
+  <div class="input--container">
+    <input type="text" id="inputField" placeholder="Type the words...">
+  </div>
 
-  <div class="buttons">
-    <button id="start">START</button>
-    <button id="end">END</button>
+
+  <div class="buttons--container">
+    <button class="buttons" id="start">START</button>
+    <button class="buttons" id="end">END</button>
   </div>
 
   <div>
@@ -38,7 +54,7 @@
   </div>
 
   <div id="leaderboard">
-    
+    <h2>Leaderboard</h2>
   </div>
 </body>
 </html>

@@ -4,16 +4,8 @@
   padding: 0;
 }
 
-
-.buttons {
-  position: relative;
-}
-
-
-#end {
-  position: absolute;
-  left: 0;
-  visibility: hidden;
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 
@@ -24,4 +16,106 @@
 
 #gameOver {
   visibility: hidden;
+}
+
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: 1rem;
+  background-color: rgb(149, 149, 15);
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+
+.selection--wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 2%;
+}
+
+
+.selection--container {
+  display: flex;
+  gap: 1rem;
+}
+
+
+#countdown {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 2%;
+}
+
+
+#words {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2%;
+}
+
+
+.input--container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+
+.buttons--container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  position: relative;
+}
+
+
+.buttons {
+  position: absolute;
+}
+
+
+#end {
+  visibility: hidden;
+}
+
+
+.buttons {
+  border: none;
+  cursor: pointer;
+  background-color: rgb(149, 149, 15);
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+
+.buttons:hover {
+  background-color: rgb(200, 200, 35);
+}
+
+
+#inputField {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+
+#leaderboard {
+  position: absolute;
+  top: 12%;
+  margin-left: 2rem;
+}
+
+
+.leaderboard--list {
+  list-style-type: none;
+}
+
+
+.list--item {
+  padding-top: 10px;
 }

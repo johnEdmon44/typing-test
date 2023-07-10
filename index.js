@@ -145,7 +145,6 @@ function generateRandomId() {
 
 function renderLeaderboard() {
   const leaderboardContainer = document.getElementById("leaderboard");
-  leaderboardContainer.textContent = "";
 
   const storedLeaderboard = localStorage.getItem("leaderboards");
   const leaderboards = storedLeaderboard ? JSON.parse(storedLeaderboard) : [];
@@ -153,15 +152,29 @@ function renderLeaderboard() {
 
   if(leaderboards.length > 0) {
     const leaderboardList = document.createElement("ul");
-    leaderboardList.classList.add("leaderboard-list");
+    leaderboardList.classList.add("leaderboard--list");
+    leaderboardList.textContent = "";
 
     const sortedLeaderboard = leaderboards.sort((a, b) => b.score - a.score); // sort by highest
     const topTen = sortedLeaderboard.slice(0, 10);
 
     topTen.forEach((game, count) => {
       const listItem = document.createElement("li");
-      listItem.textContent = `${count + 1} Score: ${game.score} Time: ${game.time} Difficulty: ${game.difficulty}`;
+      const scoreItem = document.createElement("p");
+      const timeItem = document.createElement("p");
+      const difficultyItem = document.createElement("p");
+
+      listItem.classList.add("list--item")
+
+      listItem.textContent = count + 1;
+      scoreItem.textContent = `Score: ${game.score}`;
+      timeItem.textContent = `Time: ${game.time}`;
+      difficultyItem.textContent = `Difficulty: ${game.difficulty}`;
+
       leaderboardList.appendChild(listItem);
+      listItem.appendChild(scoreItem);
+      listItem.appendChild(timeItem);
+      listItem.appendChild(difficultyItem);
     });
 
     leaderboardContainer.appendChild(leaderboardList);
