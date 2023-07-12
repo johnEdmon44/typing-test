@@ -119,3 +119,41 @@ h1 {
 .list--item {
   padding-top: 10px;
 }
+
+
+@media (max-width: 1024px) {
+  #leaderboard {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #leaderboard {
+    margin-left: .5rem;
+  }
+}
+
+
+@media (max-width: 426px) {
+  h1 {
+    font-size: 1rem;
+    letter-spacing: .5rem;
+  }
+
+
+  #leaderboard {
+    position: static;
+    font-size: 12px;
+    margin-top: 5rem;
+  }
+
+
+  .selection--wrapper {
+    gap: .5rem;
+  }
+
+
+  .leaderboard--list {
+    columns: 2;
+  }
+}
