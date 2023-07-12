@@ -157,3 +157,25 @@ h1 {
     columns: 2;
   }
 }
+
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 2rem;
+  }
+
+
+  #difficulty, #timer {
+    font-size: 1rem;
+  }
+
+
+  #inputField {
+   font-size: 1rem;
+  }
+
+
+  .buttons {
+    font-size: 1rem;
+  }
+}
