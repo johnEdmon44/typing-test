@@ -9,8 +9,6 @@ Welcome to the Typing Test application! This web-based game allows you to test a
 - [Getting Started](#getting-started)
 - [Game Instructions](#game-instructions)
 - [Leaderboard](#leaderboard)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
