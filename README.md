@@ -71,11 +71,3 @@ To run the Typing Test application locally, follow these steps:
 ## Leaderboard
 
 The leaderboard keeps track of the top ten scores achieved in the game. It shows the score, time, and difficulty level for each entry. The leaderboard is updated after each game and is stored locally in your browser's local storage.
-
-## Contributing
-
-Contributions are welcome! If you have any suggestions, bug reports, or improvements, please open an issue or submit a pull request.
-
-## License
-
-The Typing Test application is licensed under the [MIT License](link-to-license-if-available).
