@@ -10,51 +10,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <title>Typing test</title>
 </head>
+
 <body>
-  <h1>TYPING TEST</h1>
+  <header>
+    <h1>TYPING TEST</h1>
+  </header>
 
-  <div class="selection--wrapper">
-    <div class="selection--container">
-      <p>Choose difficulty:</p>
-      <select id="difficulty">
-        <option value="easy" selected>Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-      </select>
+  <section>
+    <div class="selection--wrapper">
+      <div class="selection--container">
+        <label for="difficulty">Choose difficulty:</label>
+        <select id="difficulty">
+          <option value="easy" selected>Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="selection--container">
+        <label for="timer">Choose time:</label>
+        <select id="timer">
+          <option value="30" selected>30sec</option>
+          <option value="60">1min</option>
+          <option value="120">2min</option>
+          <option value="300">5min</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section id="typing--game">
+    <p id="countdown"></p>
+    <p id="words"></p>
+
+    <div class="input--container">
+      <input type="text" id="inputField" placeholder="Type the words...">
     </div>
 
-    <div class="selection--container">
-      <p>Choose time:</p>
-      <select id="timer">
-        <option value="30" selected>30sec</option>
-        <option value="60">1min</option>
-        <option value="120">2min</option>
-        <option value="300">5min</option>
-      </select>
+    <div class="buttons--container">
+      <button class="buttons" id="start">START</button>
+      <button class="buttons" id="end">END</button>
     </div>
-  </div>
-  
-  <p id="countdown"></p>
-  <p id="words"></p>
 
-  <div class="input--container">
-    <input type="text" id="inputField" placeholder="Type the words...">
-  </div>
+    <div id="game--over">
+      <h2 id="gameOver">Game over!</h2>
+      <p id="score"></p>
+      <strong id="selectedDifficulty"></strong>
+    </div>
+  </section>
 
-
-  <div class="buttons--container">
-    <button class="buttons" id="start">START</button>
-    <button class="buttons" id="end">END</button>
-  </div>
-
-  <div>
-    <p id="gameOver">Game over!</p>
-    <p id="score"></p>
-    <p id="selectedDifficulty"></p>
-  </div>
-
-  <div id="leaderboard">
-    <h2>Leaderboard</h2>
-  </div>
+  <section id="leaderboard">
+    <button class="buttons" id="showLeaderboard">Show leaderboard</button>
+  </section>
 </body>
 </html>

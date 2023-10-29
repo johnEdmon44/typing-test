@@ -12,8 +12,10 @@ const getWords = document.getElementById("words");
 const getInputField = document.getElementById("inputField");
 const getEnd = document.getElementById("end");
 const getScore = document.getElementById("score");
-const getGamerOver = document.getElementById("gameOver");
+const getGamerOver = document.getElementById("game--over");
 const getSelectedDifficulty = document.getElementById("selectedDifficulty");
+const getBtnLeaderboard = document.getElementById("showLeaderboard");
+const getLeaderboardContainer = document.getElementById("leaderboard");
 
 
 let generatedWords = [];
@@ -78,9 +80,8 @@ function compareInput(inputValue) {
 
 
 function gameOver() {
-  getScore.textContent = score;
-  getScore.style.visibility = "visible";
   getGamerOver.style.visibility = "visible";
+  getScore.textContent = score;
   getSelectedDifficulty.textContent = getDifficulty.value;
 }
 
@@ -121,6 +122,8 @@ function updateScore() {
 
 
 function addToLeaderboards() {
+  const leaderboards = JSON.parse(localStorage.getItem("leaderboards")) || [];
+
   const gameDetails = {
     id: generateRandomId(),
     time: getTimer.value,
@@ -144,8 +147,6 @@ function generateRandomId() {
 
 
 function renderLeaderboard() {
-  const leaderboardContainer = document.getElementById("leaderboard");
-
   const storedLeaderboard = localStorage.getItem("leaderboards");
   const leaderboards = storedLeaderboard ? JSON.parse(storedLeaderboard) : [];
 
@@ -177,7 +178,7 @@ function renderLeaderboard() {
       listItem.appendChild(difficultyItem);
     });
 
-    leaderboardContainer.appendChild(leaderboardList);
+    getLeaderboardContainer.appendChild(leaderboardList);
   }
 }
 
@@ -201,3 +202,16 @@ getEnd.addEventListener("click", () => {
   generatedWords = [];
   resetGame();
 });
+
+
+getBtnLeaderboard.addEventListener("click", () => {
+  const leaderboardList = document.querySelector(".leaderboard--list");
+
+  leaderboardList.classList.toggle("show");
+
+  if(leaderboardList.classList.contains("show")) {
+    getBtnLeaderboard.textContent = "Hide leaderboard";
+  } else {
+    getBtnLeaderboard.textContent = "Show leaderboard";
+  }
+})

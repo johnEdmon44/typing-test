@@ -9,13 +9,10 @@ body {
 }
 
 
-#score {
+#game--over {
   visibility: hidden;
-}
-
-
-#gameOver {
-  visibility: hidden;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 
@@ -67,13 +64,8 @@ h1 {
 .buttons--container {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 2%;
-  position: relative;
-}
-
-
-.buttons {
-  position: absolute;
 }
 
 
@@ -113,6 +105,12 @@ h1 {
 
 .leaderboard--list {
   list-style-type: none;
+  display: none;
+}
+
+
+.show {
+  display: block;
 }
 
 
